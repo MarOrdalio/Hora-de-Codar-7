@@ -1,0 +1,110 @@
+<html>
+
+<head>
+
+	<script>
+let quartos = new Array(20).fill(true) // fill prenche tudo com true o valor que coloquei no (), e new um novo arrey e array maiusculo =  Arrey
+let nome
+
+		function inicio() {
+
+
+            alert("Bem vindo ao Brooklyn Hotel")
+			 nome = prompt("Digite seu nome: ")
+			let senha = prompt("Sua senha: ")
+
+			if(senha != 2678){
+				alert("senha incorreta!")
+				inicio();
+               
+			}else if(senha === 2678){ 
+				alert(`Bem vindo ao Hotel Brooklyn Hotel, ${nome}. É um imenso prazer ter você por aqui!`)}
+
+			var escolha = parseInt(prompt('Selecione uma opção\n1.) Reserva de Quartos\n2.) Cadastro de Hóspedes\n3.) Abastecimento de Carros\n4.) Sair\n 5.) Serviços'));
+
+
+
+
+			switch (escolha){
+			case 1:
+				reserva_quartos();
+				break;
+			
+			case 2:
+				cadastro_hospedes();
+				break;
+
+	     	case 3:
+				abastecer_carros();
+				break;
+
+		    case 4:
+				sair();
+			break;
+
+
+			case 5: 
+			 servicos()
+			 break;
+			default: 
+			inicio()
+		    }
+		}		
+	
+
+
+
+
+
+
+
+		function reserva_quartos() {
+			alert('HOTEL Brooklyn Hotel - RESERVA DE QUARTOS');
+			inicio();
+		}
+
+		function cadastro_hospedes() {
+			alert('HOTEL Brooklyn Hotel - CADASTRO DE HÓSPEDES');
+			inicio();
+		}
+
+		function abastecer_carros() {
+			alert('HOTEL Brooklyn Hotel - ABASTECER');
+			inicio();
+		}
+
+		function erro() {
+			alert('Por favor, informe um número entre 1 e 4');
+			inicio();
+		}
+
+		function sair() {
+
+
+			var confirma = confirm('Você deseja sair?');
+			if(confirma){
+			alert('Muito obrigado e até logo,' + nome );
+			inicio()
+		}
+		
+		}
+
+		function servicos(){
+			let escolhaServico = parseFloat(prompt(" Escolha qual serviço você deseja? Os serviços de quarto disponíveis em seu plano atualmente são:\n 1-Garçon\n 2-Meditação\n 3-Massageadora\n 4-Cafa da Manhã, Almoço e Janta \n 5-Faxineira "))
+			
+			
+			alert("Em alguns minutos um de nossos profissionais irá chegar em seu quarto senhor(a), " + nome)
+			inicio()
+
+		}
+		
+		
+		inicio();
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
