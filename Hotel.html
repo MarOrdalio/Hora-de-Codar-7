@@ -3,8 +3,8 @@
 <head>
 
 	<script>
-let quartos = new Array(20).fill(true) // fill prenche tudo com true o valor que coloquei no (), e new um novo arrey e array maiusculo =  Arrey
-let nome
+let quartos = new Array(20).fill(true); // fill prenche tudo com true o valor que coloquei no (), e new um novo arrey e array maiusculo =  Arrey
+let nome;
 
 		function inicio() {
 
@@ -18,11 +18,11 @@ let nome
 				inicio();
                
 			}else if(senha === 2678){ 
-				alert(`Bem vindo ao Hotel Brooklyn Hotel, ${nome}. É um imenso prazer ter você por aqui!`)}
+				alert(`Bem vindo ao Hotel Brooklyn Hotel, ${nome}.!`)}
 
-			var escolha = parseInt(prompt('Selecione uma opção\n1.) Reserva de Quartos\n2.) Cadastro de Hóspedes\n3.) Abastecimento de Carros\n4.) Sair\n 5.) Serviços'));
+			let escolha = parseInt(prompt('Selecione uma opção\n1.) Reserva de Quartos\n2.) Cadastro de Hóspedes\n3.) Abastecimento de Carros\n4.) Sair\n5.) Serviços'));
 
-
+ 
 
 
 			switch (escolha){
@@ -51,17 +51,82 @@ let nome
 		    }
 		}		
 	
+	
+		 
+		function listar_quartos() {
+    let status_quartos = "Status dos Quartos:\n";
+
+    for (let contador = 1; contador <= 20; contador++) {
+        status_quartos += `${contador} - ${quartos[contador - 1] ? "Livre" : "Ocupado"}\n`;
+    }
 
 
 
+	alert(status_quartos);
 
+
+
+} // termina função
 
 
 
 		function reserva_quartos() {
-			alert('HOTEL Brooklyn Hotel - RESERVA DE QUARTOS');
+			alert(" Brooklyn Hotel - RESERVA DE QUARTOS");
+            
+		
+		
+			let valor_diaria = parseFloat(prompt("Qual o valor padrão da diária? "))
+            if(valor_diaria<20){
+				alert('Valor inválido, ' + nome)
+				reserva_quartos()
+			}
+            
+			let quanta_diarias = parseFloat(prompt("Quantas diárias são necessárias? "))
+			if(quanta_diarias<1){
+				alert('Valor inválido, ' + nome)
+				reserva_quartos()
+		//
+			}
+  
+			let preco_total = quanta_diarias*valor_diaria
+			alert(" o valor de " + quanta_diarias + " dias de hospedagem é de " + preco_total)
+
+
+
+			let nome_hospede = prompt("Digite seu nome: ")
+
+			
+            while(true){
+			let quarto = parseFloat(prompt("Qual o quarto para reserva (1 - 20)? "))
+            if(quarto > 20 || quarto<=0 ){
+            alert("Digite um valor válido de 1 a 20")
+			continue;//verificar numero é valido
+				} 
+		
+		
+				if (!quartos[quarto - 1]) { // Se for false, está ocupado
+            alert("Quarto ocupado! Escolha outro.");
+			listar_quartos();
+		continue;
+	}
+           
+
+            quartos[quarto - 1] = false; // Reserva o quarto
+            alert(`Reserva feita com sucesso! Quarto ${quarto} reservado para ${nome_hospede}.`);
+            inicio();
+            break;
+			
+			
+		   }
+
+		} //while
+	
+
+
 			inicio();
-		}
+
+
+		
 
 		function cadastro_hospedes() {
 			alert('HOTEL Brooklyn Hotel - CADASTRO DE HÓSPEDES');
