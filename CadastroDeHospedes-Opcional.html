@@ -25,6 +25,10 @@
 			}
 			
 			function cadastrar_hospedes() {
+
+            let valor_diaria = parseFloat(prompt("Qual o valor padrão da diária: "))
+			
+
 				// lenght é uma propriedade que retorna a quantidade de itens dentro do array. 
 				if (lista_hospedes.length >= 15){
 					alert("Numero máximo de hóspedes cadastrados.");
@@ -34,6 +38,11 @@
 					// O método push() permite adicionar um item ao Array/Vetor. Importante dizer que ele adiciona o elemento ao final do Array/Vetor. 
 					lista_hospedes.push(nome_hospede);
 					console.log(lista_hospedes); // O console é usado apenas para exibir ao desenvolvedor todo mundo que já está cadastrado.
+
+					let idade_do_hospede = parseFloat(prompt("Qual a idade do Hóspede? "))
+					if(idade_do_hospede >=6){
+						alert("Sucesso! Hóspede " + nome_hospede + " foi cadastrada(o) com sucesso! "+ nome_hospede + " , possui gratuidade")
+					}
 					alert("Sucesso! Hóspede " + nome_hospede + " foi cadastrada(o) com sucesso!\n");
 				}
 				
