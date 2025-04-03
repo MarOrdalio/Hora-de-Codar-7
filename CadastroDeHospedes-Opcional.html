@@ -8,6 +8,7 @@
 		//var lista_hospedes = ["Gabriel Augusto", "Roberto Gómez Bolaños", "María Antonieta de las Nieves", "Hector Bonilha", "Carlos Villagrán", "Ramón Valdés"]; 
 
 		var lista_hospedes = [];
+		var guardar_idade = [];
 
 		function sistema_cadastrar_hospedes() {
 
@@ -35,17 +36,27 @@
 				} else {
 					var nome_hospede = prompt('Por favor, informe o nome da(o) hóspede:');
 					if (nome_hospede.toUpperCase() === 'PARE') {
+						
+						alert(nome_hospede + " o valor total das hospedagens é: "   )//valor
 						break;
 					}
 
 					// O método push() permite adicionar um item ao Array/Vetor. Importante dizer que ele adiciona o elemento ao final do Array/Vetor. 
 					lista_hospedes.push(nome_hospede);
 					console.log(lista_hospedes); // O console é usado apenas para exibir ao desenvolvedor todo mundo que já está cadastrado.
+                     
+					
 
-					let idade_do_hospede = parseFloat(prompt("Qual a idade do Hóspede? "))
+					idade_do_hospede = parseInt(prompt("Qual a idade do Hóspede? "))
+					guardar_idade.push(idade_do_hospede);
+					console.log(guardar_idade);
 					if (idade_do_hospede <= 6) {
+						
+						
 						alert("Sucesso! Hóspede " + nome_hospede + " foi cadastrada(o) com sucesso! " + nome_hospede + " , possui gratuidade")
 					} else if (idade_do_hospede >= 60) {
+
+
 						alert("Sucesso! Hóspede " + nome_hospede + " foi cadastrada(o) com sucesso! " + nome_hospede + " , paga meia")
 					}
 
