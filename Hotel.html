@@ -57,7 +57,7 @@ let nome;
     let status_quartos = "Status dos Quartos:\n";
 
     for (let contador = 1; contador <= 20; contador++) {
-        status_quartos += `${contador} - ${quartos[contador - 1] ? "Livre" : "Ocupado"}\n`;
+        status_quartos += `${contador} - ${quartos[contador - 1] ? "Livre" : "Ocupado"}\n` ;
     }
 
 
@@ -109,14 +109,20 @@ let nome;
 			listar_quartos();
 		continue;
 	}
-           
+            
+	    let continuar = (prompt(` ${nome}, você confirma a hospedagem para ${nome_hospede} por 10 dias para o quarto 7 por R$550.0 ? S/N`)) 
+		if(continuar !== 's' && continuar !== 'S'){
+			reserva_quartos()
+		}
 
             quartos[quarto - 1] = false; // Reserva o quarto
+			alert(`quarto livre!`)
             alert(`Reserva feita com sucesso! Quarto ${quarto} reservado para ${nome_hospede}.`);
+		    listar_quartos()
             inicio();
             break;
 			
-			
+		
 		   }
 
 		} //while

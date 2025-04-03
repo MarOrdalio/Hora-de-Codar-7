@@ -10,43 +10,25 @@
 			var lista_hospedes = [];
 			
 			function sistema_cadastrar_hospedes() {
-           
-				alert("Bem vindo ao Brooklyn Hotel")
-			let name = prompt("Digite seu nome: ")
-			let senha = prompt("Sua senha: ")
-
-			if(senha != 2678){
-				alert("senha incorreta!")
-				sistema_cadastrar_hospedes()
-               
-			}else{
-				alert(`Bem vindo ao Hotel Brooklyn Hotel, ${nome_hospede}. É um imenso prazer ter você por aqui!`)
-			}
-
-         
 
 				var escolha_hospedes = parseInt(prompt('Cadastro de Hóspedes\n\n Selecione uma opção: \n1. Cadastrar \n2. Pesquisar \n3. Sair'));
 
-				switch (escolha) {
-					case 1:
+				if (escolha_hospedes === 1) {
 					cadastrar_hospedes();
-					break;
-				
-				case 2:
+				} else if (escolha_hospedes === 2) {
 					pesquisar_hospedes();
-					break;
-					
-				case 3: 
-					sistema_cadastrar_hospedes()
-					break;
+				} else if (escolha_hospedes === 3) {
 					//inicio();
-				default:
+				} else {
 					erro_pesquisar_hospedes();
 				}
 			}
 			
-
 			function cadastrar_hospedes() {
+
+            let valor_diaria = parseFloat(prompt("Qual o valor padrão da diária: "))
+			
+
 				// lenght é uma propriedade que retorna a quantidade de itens dentro do array. 
 				if (lista_hospedes.length >= 15){
 					alert("Numero máximo de hóspedes cadastrados.");
@@ -56,11 +38,13 @@
 					// O método push() permite adicionar um item ao Array/Vetor. Importante dizer que ele adiciona o elemento ao final do Array/Vetor. 
 					lista_hospedes.push(nome_hospede);
 					console.log(lista_hospedes); // O console é usado apenas para exibir ao desenvolvedor todo mundo que já está cadastrado.
+
+					let idade_do_hospede = parseFloat(prompt("Qual a idade do Hóspede? "))
+					if(idade_do_hospede >=6){
+						alert("Sucesso! Hóspede " + nome_hospede + " foi cadastrada(o) com sucesso! "+ nome_hospede + " , possui gratuidade")
+					}
 					alert("Sucesso! Hóspede " + nome_hospede + " foi cadastrada(o) com sucesso!\n");
 				}
-
-
-
 				
 				sistema_cadastrar_hospedes();
 			}
