@@ -9,6 +9,7 @@
 
 		var lista_hospedes = [];
 		var guardar_idade = [];
+	
 
 		function sistema_cadastrar_hospedes() {
 
@@ -26,10 +27,14 @@
 		}
 
 		function cadastrar_hospedes() {
-
-			let valor_diaria = parseFloat(prompt("Qual o valor padrão da diária: "))
-
+		
 			while (true) {
+
+
+				
+			let valor_diaria = parseFloat(prompt("Qual o valor padrão da diária: "));
+			let valortotal = 0;
+
 				// lenght é uma propriedade que retorna a quantidade de itens dentro do array. 
 				if (lista_hospedes.length >= 15) {
 					alert("Numero máximo de hóspedes cadastrados.");
@@ -37,8 +42,9 @@
 					var nome_hospede = prompt('Por favor, informe o nome da(o) hóspede:');
 					if (nome_hospede.toUpperCase() === 'PARE') {
 						
-						alert(nome_hospede + " o valor total das hospedagens é: "   )//valor
+						alert(nome_hospede + " o valor total das hospedagens é: " + valor_total   )//valor
 						break;
+						sistema_cadastrar_hospedes();
 					}
 
 					// O método push() permite adicionar um item ao Array/Vetor. Importante dizer que ele adiciona o elemento ao final do Array/Vetor. 
@@ -62,8 +68,8 @@
 
 					else {
 						alert("Sucesso! Hóspede " + nome_hospede + " foi cadastrada(o) com sucesso!\n");
+						valortotal +=valor_diaria
 					}
-
 
 
 
