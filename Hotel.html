@@ -6,6 +6,9 @@
 let quartos = new Array(20).fill(true); // fill prenche tudo com true o valor que coloquei no (), e new um novo arrey e array maiusculo =  Arrey
 let nome;
 var lista_hospedes = [];
+var dia_do_evento=[];
+var hora_evento=[];
+
 
 		function inicio() {
 
@@ -244,11 +247,46 @@ var lista_hospedes = [];
 
 
 		function eventos(){
+			
 			let numero_de_convidados = parseFloat(prompt("Qual o número de convidados para o seu evento?"))
-			if(numero_de_convidados>350 )
+			if(numero_de_convidados>350 || numero_de_convidados<0 ){
+				alert("Número de convidados inválido, digite valorers acima de 350 e abaixo de 0")
+				return inicio();
+			}
+			
+			else if(numero_de_convidados<=150){
+				alert("Use o auditório laranja")
+				alert("Agora vamos ver a agenda do evento.")
+			}
+			
+			else if(numero_de_convidados>150 && numero_de_convidados<=220){
+         inclua = numero_de_convidados-150 
+		 alert(`Use o auditório Laranja (inclua mais ${inclua} cadeiras)`)
+		 alert("Agora vamos ver a agenda do evento.")} 
+
+
+		  else if(numero_de_convidados>220){
+			alert("Use o auditório Colorado")
+			alert("Agora vamos ver a agenda do evento.")
 		}
-		
-		
+	
+
+
+	let dia = prompt("Qual o dia do evento?");{
+		dia.toLowerCase();
+		if(dia_do_evento.includes(dia)){
+			alert("Auditório indisponível")
+			eventos()  
+		}else{
+dia_do_evento.push(dia)
+return inicio();
+		}
+
+	}
+}
+	
+	
+	
 		inicio();
 	</script>
 </head>
