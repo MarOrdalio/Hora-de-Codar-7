@@ -7,8 +7,8 @@
 		let nome;
 		var lista_hospedes = [];
 		var dia_do_evento = [];
-
-
+       var empresas= [];
+      var orcamentos=[];
 
 		function inicio() {
 
@@ -25,7 +25,7 @@
 				alert(`Bem vindo ao Hotel Brooklyn Hotel, ${nome}.!`)
 			}
 
-			let escolha = parseInt(prompt('Selecione uma opção\n1.) Reserva de Quartos\n2.) Cadastro de Hóspedes\n3.) Abastecimento de Carros\n4.) Sair\n5.) Serviços \n6.) Eventos'));
+			let escolha = parseInt(prompt('Selecione uma opção\n1.) Reserva de Quartos\n2.) Cadastro de Hóspedes\n3.) Abastecimento de Carros\n4.) Sair\n5.) Serviços \n6.) Eventos \n7.) Ar Condicionado'));
 
 
 
@@ -57,8 +57,13 @@
 					eventos();
 					break;
 
+			 case 7: 
+			 arpuro();
+			 break;		
+
 				default:
 					inicio()
+					
 			}
 		}
 
@@ -217,32 +222,35 @@
 
 
 		function abastecer_carros() {
-			alert('HOTEL Brooklyn Hotel - ABASTECER');
+    alert('HOTEL Brooklyn Hotel - ABASTECER');
 
 
-			let alcoolWayne = parseFloat(prompt("Qual o valor do álcool no posto Wayne Oil? "));
-            let gasolinaWayne = parseFloat(prompt("Qual o valor da gasolina no posto Wayne Oil? "));
-            var  conta_wayne = alcoolWayne/gasolinaWayne
-            let  relacaowayne = (conta_wayne<=0,7 )?'álcool':'gasolina';
+    let alcoolWayne = parseFloat(prompt("Qual o valor do álcool no posto Wayne Oil? "));
+    let gasolinaWayne = parseFloat(prompt("Qual o valor da gasolina no posto Wayne Oil? "));
+    let usarWayne = (alcoolWayne / gasolinaWayne <= 0.7) ? 'álcool' : 'gasolina';
+    let precoWayne = (usarWayne === 'álcool') ? alcoolWayne : gasolinaWayne;
 
-            let alcoolStark = parseFloat(prompt("Qual o valor do álcool no posto Stark Petrol? "));
-            let gasolinaStark = parseFloat(prompt("Qual o valor da gasolina no posto Stark Petrol? "));
-		    var conta_stark = alcoolWayne/alcoolWayne
-            let relacaostark= (conta_stark<=0,7)? 'álcool':'gasolina'
-		
 
-			if (re < custoStark) {
-        alert(`É mais barato abastecer com ${relacaostark} no posto Wayne Oil.`);
+    let alcoolStark = parseFloat(prompt("Qual o valor do álcool no posto Stark Petrol? "));
+    let gasolinaStark = parseFloat(prompt("Qual o valor da gasolina no posto Stark Petrol? "));
+    let usarStark = (alcoolStark / gasolinaStark <= 0.7) ? 'álcool' : 'gasolina';
+    let precoStark = (usarStark === 'álcool') ? alcoolStark : gasolinaStark;
+
+    
+
+    if (precoWayne < precoStark) {
+        alert(`É mais barato abastecer com ${usarWayne} no posto Wayne Oil.`);
     } else {
-        alert(`É mais barato abastecer com ${combustivelStark} no posto Stark Petrol.`);
+        alert(`É mais barato abastecer com ${usarStark} no posto Stark Petrol.`);
     }
 }
 
 
 
 
+
 			inicio();
-		}
+		
 
 		function erro() {
 			alert('Por favor, informe um número entre 1 e 4');
@@ -255,7 +263,7 @@
 			var confirma = confirm('Você deseja sair?');
 			if (confirma) {
 				alert('Muito obrigado e até logo,' + nome);
-				inicio()
+			
 			}
 
 		}
@@ -335,9 +343,9 @@ Custo do Buffet: ${custo_buffet.toFixed(2)}`)
 							alert("Reserva não efetuada.")
 						}
 					
-
+return inicio();
 					
-					return inicio();
+					
 				}
 
 
@@ -345,8 +353,52 @@ Custo do Buffet: ${custo_buffet.toFixed(2)}`)
 		}
 
 
+		function arpuro(){
 
-		inicio();
+
+			
+			let nome_da_empresa = prompt("Qual o nome da empresa?")
+			empresas.push(nome_da_empresa)
+
+			let valor_do_aparelho = parseFloat(prompt("Qual o valor por aparelho?"))
+			let quantidade_de_aparelho = parseFloat(prompt("Qual a quantidade de aparelhos?"))
+			let desconto = parseFloat(prompt("Qual a porcentagem de desconto?"))
+			let min_descontos = parseFloat(prompt("Qual o número mínimo de aparelhos para conseguir o desconto?"))
+
+			resultadoar = valor_do_aparelho*quantidade_de_aparelho
+
+
+            if(quantidade_de_aparelho>=min_descontos){
+				valor_desconto = (desconto / 100) * resultadoar
+				resultado_final= resultadoar - valor_desconto
+				alert(`O serviço da ${nome_da_empresa} custará R$ ${resultado_final}`)
+				
+			}else{
+				alert(`O serviço da ${nome_da_empresa} custará R$ ${resultadoar}`)
+			    
+				resultado_final = resultadoar
+			}
+
+
+
+			orcamentos.push(resultado_final);
+
+			let deseja_continuar = prompt(`Deseja informar novos dados, ${nome}? (S/N)`)
+			if(deseja_continuar ==='s' && 'S'){
+				return arpuro()
+			}else{
+           
+				menor_valor = Math.min(...orcamentos) // pq ta no arrey vai (...)
+				posicao= orcamentos.indexOf(menor_valor)
+                mais_barata = empresas[posicao]
+				alert(`O orçamento de menor valor é o ${mais_barata} por ${menor_valor} `)
+			}
+
+			
+		}
+
+inicio()
+		
 	</script>
 </head>
 
